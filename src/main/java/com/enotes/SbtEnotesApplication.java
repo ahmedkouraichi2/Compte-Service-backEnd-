@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import com.enotes.entity.Compte;
 import com.enotes.entity.TypeCompte;
@@ -36,8 +37,10 @@ public class SbtEnotesApplication{
 	// emme methode bean annotation a démmarage elle tourne 
 	
 	
-	CommandLineRunner start(CompteRepository compteRepository ) {
+	CommandLineRunner start(CompteRepository compteRepository,RepositoryRestConfiguration  restConfiguration) {
 		 return args->{
+			 
+			 restConfiguration.exposeIdsFor(Compte.class);
 			 compteRepository.save(new Compte(null,9800,new Date(),TypeCompte.COURANT));
 			 compteRepository.save(new Compte(null,2500,new Date(),TypeCompte.COURANT));
 			 compteRepository.save(new Compte(null,8000,new Date(),TypeCompte.EPARGNE));

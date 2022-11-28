@@ -20,18 +20,10 @@ public class CompteRestController {
 	@Autowired 
 	private CompteRepository compteRepository ;
 	
-	/*
-	
-	public CompteRestController(CompteRepository compteRepository) {
-		 this.compteRepository = compteRepository;
-	}
-	
-	*/
-	
+
 	@GetMapping(path="/comptes")
 	 public List<Compte> ListCompte(){
 		 return compteRepository.findAll();
-	}
 	
 	@GetMapping(path="/comptes/{code}")
 	 public Compte CompteAvecId(@PathVariable Long code ){
