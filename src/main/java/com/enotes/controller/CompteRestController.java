@@ -24,6 +24,7 @@ public class CompteRestController {
 	@GetMapping(path="/comptes")
 	 public List<Compte> ListCompte(){
 		 return compteRepository.findAll();
+	}
 	
 	@GetMapping(path="/comptes/{code}")
 	 public Compte CompteAvecId(@PathVariable Long code ){
